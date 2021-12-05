@@ -1,5 +1,3 @@
-package swing;
-
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
@@ -293,7 +291,7 @@ public class ExaminerRegistration extends JFrame {
                 if (mobLen != 10) {
                     JOptionPane.showMessageDialog(btnNewButton, "Enter a valid mobile number");
                 }
-                if (mobLen != 12) {
+                if (aadharLen != 12) {
                     JOptionPane.showMessageDialog(btnNewButton, "Enter a valid Aadhar number");
                 }
                 try {
@@ -306,10 +304,10 @@ public class ExaminerRegistration extends JFrame {
                     Statement sta = connection.createStatement();
                     int x = sta.executeUpdate(query);
                     if (x == 0) {
-                        JOptionPane.showMessageDialog(btnNewButton, "This is alredy exist");
+                        JOptionPane.showMessageDialog(btnNewButton, "Examiner already exists");
                     } else {
                         JOptionPane.showMessageDialog(btnNewButton,
-                            "Welcome, " + msg + "Examiner has registerd sucessfully !");
+                            "Welcome, " + msg + "Examiner has been registered sucessfully !");
                     }
                     connection.close();
                 } catch (Exception exception) {
