@@ -8,6 +8,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
@@ -242,7 +244,33 @@ public class ExaminerRegistration extends JFrame {
         contentPane.add(examID);
         examID.setColumns(10);
         
-        String[] schoolOptionsToChoose = {"1","2","3","4","5","6","7","8","9","10","11","12"};
+        int ii=0;
+        try {
+        	Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/Board-Exam-Management-System", "postgres", "prabithgupta");
+        	Statement stmt = connection.createStatement();
+        	ResultSet rs = stmt.executeQuery("SELECT schoolid FROM school ;");
+        	while (rs.next()) {
+        		ii=ii+1;
+        	}
+        }catch(SQLException err) {
+ 	         System.out.println("SQL exception occured" + err);
+ 	      }
+        String[] schoolOptionsToChoose = new String[ii];
+        try {
+        	Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/Board-Exam-Management-System", "postgres", "prabithgupta");
+        	Statement stmt = connection.createStatement();
+        	ResultSet rs = stmt.executeQuery("SELECT schoolid FROM school ;");
+        	int i=0;
+        	while (rs.next()) {
+        		String sd = rs.getString("schoolid");
+        		schoolOptionsToChoose[i]= sd;
+        		i=i+1;
+
+        	}
+        }catch(SQLException err) {
+ 	         System.out.println("SQL exception occured" + err);
+ 	      }
+        //String[] schoolOptionsToChoose = {"1","2","3","4","5","6","7","8","9","10","11","12"};
         JComboBox <String> schoolComboBox = new JComboBox<>(schoolOptionsToChoose);
         schoolComboBox.setBounds(700, 120, 230, 25);
         contentPane.add(schoolComboBox);
@@ -289,8 +317,35 @@ public class ExaminerRegistration extends JFrame {
         genderRadioO.setFont(new Font("Tahoma", Font.PLAIN, 18));
         genderRadioO.setBackground(new Color(176, 224, 230));
         contentPane.add(genderRadioO);
+        
+        int iii=0;
+        try {
+        	Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/Board-Exam-Management-System", "postgres", "prabithgupta");
+        	Statement stmt = connection.createStatement();
+        	ResultSet rs = stmt.executeQuery("SELECT sid FROM stream ;");
+        	while (rs.next()) {
+        		iii=iii+1;
+        	}
+        }catch(SQLException err) {
+ 	         System.out.println("SQL exception occured" + err);
+ 	      }
+        String[] streamOptionsToChoose = new String[iii];
+        try {
+        	Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/Board-Exam-Management-System", "postgres", "prabithgupta");
+        	Statement stmt = connection.createStatement();
+        	ResultSet rs = stmt.executeQuery("SELECT sid FROM stream ;");
+        	int i=0;
+        	while (rs.next()) {
+        		String std = rs.getString("sid");
+        		streamOptionsToChoose[i]= std;
+        		i=i+1;
 
-        String[] streamOptionsToChoose = {"1","2","3","4"};
+        	}
+        }catch(SQLException err) {
+ 	         System.out.println("SQL exception occured" + err);
+ 	      }
+        
+        //String[] streamOptionsToChoose = {"1","2","3","4"};
         JComboBox <String> streamComboBox = new JComboBox<>(streamOptionsToChoose);
         streamComboBox.setBounds(707, 360, 228, 25);
         contentPane.add(streamComboBox);

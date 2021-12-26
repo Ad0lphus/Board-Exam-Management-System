@@ -9,6 +9,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
@@ -192,7 +194,34 @@ public class StudentRegistration extends JFrame {
         yearComboBox.setBounds(370, 410, 70, 25);
         contentPane.add(yearComboBox);
         
-        String[] schoolOptionsToChoose = {"1","2"}; //{"school1","school2"}; 
+        int iiii=0;
+        try {
+        	Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/Board-Exam-Management-System", "postgres", "prabithgupta");
+        	Statement stmt = connection.createStatement();
+        	ResultSet rs = stmt.executeQuery("SELECT schoolid FROM school ;");
+        	while (rs.next()) {
+        		iiii=iiii+1;
+        	}
+        }catch(SQLException err) {
+ 	         System.out.println("SQL exception occured" + err);
+ 	      }
+        String[] schoolOptionsToChoose = new String[iiii];
+        try {
+        	Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/Board-Exam-Management-System", "postgres", "prabithgupta");
+        	Statement stmt = connection.createStatement();
+        	ResultSet rs = stmt.executeQuery("SELECT schoolid FROM school ;");
+        	int i=0;
+        	while (rs.next()) {
+        		String scd = rs.getString("schoolid");
+        		schoolOptionsToChoose[i]= scd;
+        		i=i+1;
+
+        	}
+        }catch(SQLException err) {
+ 	         System.out.println("SQL exception occured" + err);
+ 	      }
+        
+        //String[] schoolOptionsToChoose = {"1","2"}; //{"school1","school2"}; 
         JComboBox <String> schoolComboBox = new JComboBox<>(schoolOptionsToChoose);
         schoolComboBox.setBounds(707, 100, 225, 25);
         contentPane.add(schoolComboBox);
@@ -272,8 +301,34 @@ public class StudentRegistration extends JFrame {
         JComboBox <String> jiComboBox = new JComboBox<>(cityOptionsToChoose);
         jiComboBox.setBounds(820, 260, 114, 25);
         contentPane.add(jiComboBox);
+        int ii=0;
+        try {
+        	Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/Board-Exam-Management-System", "postgres", "prabithgupta");
+        	Statement stmt = connection.createStatement();
+        	ResultSet rs = stmt.executeQuery("SELECT sid FROM stream ;");
+        	while (rs.next()) {
+        		ii=ii+1;
+        	}
+        }catch(SQLException err) {
+ 	         System.out.println("SQL exception occured" + err);
+ 	      }
+        String[] streamOptionsToChoose = new String[ii];
+        try {
+        	Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/Board-Exam-Management-System", "postgres", "prabithgupta");
+        	Statement stmt = connection.createStatement();
+        	ResultSet rs = stmt.executeQuery("SELECT sid FROM stream ;");
+        	int i=0;
+        	while (rs.next()) {
+        		String sd = rs.getString("sid");
+        		streamOptionsToChoose[i]= sd;
+        		i=i+1;
 
-        String[] streamOptionsToChoose = {"1","2"}; //{"PCMB-Hindi","PCMB-Sanskrit"}; 
+        	}
+        }catch(SQLException err) {
+ 	         System.out.println("SQL exception occured" + err);
+ 	      }
+    
+        //String[] streamOptionsToChoose = {"1","2"}; //{"PCMB-Hindi","PCMB-Sanskrit"}; 
         JComboBox <String> streamComboBox = new JComboBox<>(streamOptionsToChoose);
         streamComboBox.setBounds(707, 380, 225, 25);
         contentPane.add(streamComboBox);
@@ -298,8 +353,33 @@ public class StudentRegistration extends JFrame {
         aadhar.setFont(new Font("Tahoma", Font.PLAIN, 22));
         aadhar.setBounds(707, 340, 228, 25);
         contentPane.add(aadhar);
-        
-        String[] centerOptionsToChoose = {"1","2"}; //{"Center-1","Center-2"}; 
+        int iii=0;
+        try {
+        	Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/Board-Exam-Management-System", "postgres", "prabithgupta");
+        	Statement stmt = connection.createStatement();
+        	ResultSet rs = stmt.executeQuery("SELECT centerid FROM centers ;");
+        	while (rs.next()) {
+        		iii=iii+1;
+        	}
+        }catch(SQLException err) {
+ 	         System.out.println("SQL exception occured" + err);
+ 	      }
+        String[] centerOptionsToChoose = new String[iii];
+        try {
+        	Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/Board-Exam-Management-System", "postgres", "prabithgupta");
+        	Statement stmt = connection.createStatement();
+        	ResultSet rs = stmt.executeQuery("SELECT centerid FROM centers ;");
+        	int i=0;
+        	while (rs.next()) {
+        		String cd = rs.getString("centerid");
+        		centerOptionsToChoose[i]= cd;
+        		i=i+1;
+
+        	}
+        }catch(SQLException err) {
+ 	         System.out.println("SQL exception occured" + err);
+ 	      }
+        //String[] centerOptionsToChoose = {"1","2"}; //{"Center-1","Center-2"}; 
         JComboBox <String> centerComboBox = new JComboBox<>(centerOptionsToChoose);
         centerComboBox.setBounds(707, 420, 225, 25);
         contentPane.add(centerComboBox);
