@@ -283,15 +283,15 @@ public class StudentRegistration extends JFrame {
         JRadioButton genderRadioO = new JRadioButton("Others");
         genderRadioM.setBounds(707, 300, 95, 25);
         genderRadioM.setFont(new Font("Tahoma", Font.PLAIN, 22));
-        genderRadioM.setBackground(new Color(153, 255, 255));
+        genderRadioM.setBackground(new Color(176, 224, 230));
         contentPane.add(genderRadioM);
         genderRadioF.setBounds(800, 300, 95, 25);
         genderRadioF.setFont(new Font("Tahoma", Font.PLAIN, 22));
-        genderRadioF.setBackground(new Color(153, 255, 255));
+        genderRadioF.setBackground(new Color(176, 224, 230));
         contentPane.add(genderRadioF);
         genderRadioO.setBounds(900, 300, 95, 25);
         genderRadioO.setFont(new Font("Tahoma", Font.PLAIN, 22));
-        genderRadioO.setBackground(new Color(153, 255, 255));
+        genderRadioO.setBackground(new Color(176, 224, 230));
         contentPane.add(genderRadioO);
 
         aadhar = new JTextField();
@@ -389,7 +389,7 @@ public class StudentRegistration extends JFrame {
         btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 22));
         btnNewButton.setBounds(699, 480, 259, 50);
         contentPane.add(btnNewButton);
-        getContentPane().setBackground(new Color(153, 255, 255));
+        getContentPane().setBackground(new Color(176, 224, 230));
         setVisible(true);
     }
 }

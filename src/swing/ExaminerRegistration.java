@@ -66,7 +66,7 @@ public class ExaminerRegistration extends JFrame {
             public void run() {
                 try {
                     ExaminerRegistration frame = new ExaminerRegistration();
-                    frame.getContentPane().setBackground(new Color(153, 255, 255));
+                    frame.getContentPane().setBackground(new Color(176, 224, 230));
                     frame.setVisible(true);
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -202,33 +202,33 @@ public class ExaminerRegistration extends JFrame {
         JRadioButton noCheckRadio = new JRadioButton("No");
         yesCheckRadio.setBounds(214, 280, 100, 25);
         yesCheckRadio.setFont(new Font("Tahoma", Font.PLAIN, 18));
-        yesCheckRadio.setBackground(new Color(153, 255, 255));
+        yesCheckRadio.setBackground(new Color(176, 224, 230));
         contentPane.add(yesCheckRadio);
         noCheckRadio.setBounds(350, 280, 100, 25);
         noCheckRadio.setFont(new Font("Tahoma", Font.PLAIN, 18));
-        noCheckRadio.setBackground(new Color(153, 255, 255));
+        noCheckRadio.setBackground(new Color(176, 224, 230));
         contentPane.add(noCheckRadio);
 
         JRadioButton yesSuperRadio = new JRadioButton("Yes");
         JRadioButton noSuperRadio = new JRadioButton("No");
         yesSuperRadio.setBounds(214, 315, 100, 25);
         yesSuperRadio.setFont(new Font("Tahoma", Font.PLAIN, 18));
-        yesSuperRadio.setBackground(new Color(153, 255, 255));
+        yesSuperRadio.setBackground(new Color(176, 224, 230));
         contentPane.add(yesSuperRadio);
         noSuperRadio.setBounds(350, 315, 100, 25);
         noSuperRadio.setFont(new Font("Tahoma", Font.PLAIN, 18));
-        noSuperRadio.setBackground(new Color(153, 255, 255));
+        noSuperRadio.setBackground(new Color(176, 224, 230));
         contentPane.add(noSuperRadio);
         
         JRadioButton yesSetterRadio = new JRadioButton("Yes");
         JRadioButton noSetterRadio = new JRadioButton("No");
         yesSetterRadio.setBounds(214, 350, 100, 25);
         yesSetterRadio.setFont(new Font("Tahoma", Font.PLAIN, 18));
-        yesSetterRadio.setBackground(new Color(153, 255, 255));
+        yesSetterRadio.setBackground(new Color(176, 224, 230));
         contentPane.add(yesSetterRadio);
         noSetterRadio.setBounds(350, 350, 100, 25);
         noSetterRadio.setFont(new Font("Tahoma", Font.PLAIN, 18));
-        noSetterRadio.setBackground(new Color(153, 255, 255));
+        noSetterRadio.setBackground(new Color(176, 224, 230));
         contentPane.add(noSetterRadio);
         
         String[] qualificationOptionsToChoose = {"BBA- Bachelor of Business Administration", "BMS- Bachelor of Management Science", "BFA- Bachelor of Fine Arts", "BEM- Bachelor of Event Management", "Integrated Law Course- BA + LL.B", "BJMC- Bachelor of Journalism and Mass Communication", "BFD- Bachelor of Fashion Designing", "BSW- Bachelor of Social Work", "BBS- Bachelor of Business Studies", "BTTM- Bachelor of Travel and Tourism Management", "Aviation Courses", "B.Sc- Interior Design", "B.Sc.- Hospitality and Hotel Administration", "Bachelor of Design (B. Design)", "Bachelor of Performing Arts", "BA- Bachelor of Arts", "BE/B.Tech- Bachelor of Technology", "B.Arch- Bachelor of Architecture", "BCA- Bachelor of Computer Applications", "B.Sc.- Information Technology", "B.Sc- Nursing", "BPharma- Bachelor of Pharmacy", "B.Sc- Interior Design", "BDS- Bachelor of Dental Surgery", "Animation, Graphics and Multimedia", "B.Sc. – Nutrition & Dietetics", "BPT- Bachelor of Physiotherapy", "B.Sc- Applied Geology", "BA/B.Sc. Liberal Arts", "B.Sc.- Physics", "B.Sc. Chemistry", "B.Sc. Mathematics", "B.Com- Bachelor of Commerce", "BBA- Bachelor of Business Administration", "B.Com (Hons.)", "BA (Hons.) in Economics", "Integrated Law Program- B.Com LL.B.", "Integarted Law Program- BBA LL.B"}; 
@@ -279,15 +279,15 @@ public class ExaminerRegistration extends JFrame {
         JRadioButton genderRadioO = new JRadioButton("Others");
         genderRadioM.setBounds(707, 320, 95, 25);
         genderRadioM.setFont(new Font("Tahoma", Font.PLAIN, 18));
-        genderRadioM.setBackground(new Color(153, 255, 255));
+        genderRadioM.setBackground(new Color(176, 224, 230));
         contentPane.add(genderRadioM);
         genderRadioF.setBounds(800, 320, 95, 25);
         genderRadioF.setFont(new Font("Tahoma", Font.PLAIN, 18));
-        genderRadioF.setBackground(new Color(153, 255, 255));
+        genderRadioF.setBackground(new Color(176, 224, 230));
         contentPane.add(genderRadioF);
         genderRadioO.setBounds(900, 320, 95, 25);
         genderRadioO.setFont(new Font("Tahoma", Font.PLAIN, 18));
-        genderRadioO.setBackground(new Color(153, 255, 255));
+        genderRadioO.setBackground(new Color(176, 224, 230));
         contentPane.add(genderRadioO);
 
         String[] streamOptionsToChoose = {"1","2","3","4"};
@@ -374,6 +374,6 @@ public class ExaminerRegistration extends JFrame {
         btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 22));
         btnNewButton.setBounds(699, 480, 259, 50);
         contentPane.add(btnNewButton);
-        getContentPane().setBackground(new Color(153, 255, 255));
+        getContentPane().setBackground(new Color(176, 224, 230));
     }
 }

@@ -80,7 +80,7 @@ public class StudentMarks extends JFrame {
 		contentPane.setLayout(null);
 
 		JPanel panel = new JPanel();
-		panel.setBackground(new Color(153, 255, 255));
+		panel.setBackground(new Color(176, 224, 230));
 		panel.setBorder(new MatteBorder(14, 14, 14, 14, (Color) new Color(95, 158, 160)));
 		panel.setBounds(10, 10, 1338, 850);
 		contentPane.add(panel);
@@ -89,7 +89,7 @@ public class StudentMarks extends JFrame {
 		JPanel panel_1 = new JPanel();
 		panel_1.setLayout(null);
 		panel_1.setBorder(new MatteBorder(14, 14, 14, 14, (Color) new Color(95, 158, 160)));
-		panel_1.setBackground(new Color(153, 255, 255));
+		panel_1.setBackground(new Color(176, 224, 230));
 		panel_1.setBounds(26, 26, 1280, 95);
 		panel.add(panel_1);
 
@@ -101,7 +101,7 @@ public class StudentMarks extends JFrame {
 		JPanel panel_2 = new JPanel();
 		panel_2.setLayout(null);
 		panel_2.setBorder(new MatteBorder(14, 14, 14, 14, (Color) new Color(95, 158, 160)));
-		panel_2.setBackground(new Color(153, 255, 255));
+		panel_2.setBackground(new Color(176, 224, 230));
 		panel_2.setBounds(26, 132, 518, 481);
 		panel.add(panel_2);
 
@@ -234,7 +234,7 @@ public class StudentMarks extends JFrame {
 		JPanel panel_3 = new JPanel();
 		panel_3.setLayout(null);
 		panel_3.setBorder(new MatteBorder(14, 14, 14, 14, (Color) new Color(95, 158, 160)));
-		panel_3.setBackground(new Color(153, 255, 255));
+		panel_3.setBackground(new Color(176, 224, 230));
 		panel_3.setBounds(26, 624, 1280, 105);
 		panel.add(panel_3);
 
@@ -275,7 +275,7 @@ public class StudentMarks extends JFrame {
                         JOptionPane.showMessageDialog(btnNewButton, "Marks already exists");
                     } else {
                         JOptionPane.showMessageDialog(btnNewButton,
-                            "Welcome,\nMarks has been registered sucessfully for"+msg+"!");
+                            "Welcome,\nMarks has been registered sucessfully for "+msg+"!");
                     }
                     connection.close();
                 } catch (Exception exception) {
@@ -414,7 +414,7 @@ public class StudentMarks extends JFrame {
 		JPanel panel_4 = new JPanel();
 		panel_4.setLayout(null);
 		panel_4.setBorder(new MatteBorder(14, 14, 14, 14, (Color) new Color(95, 158, 160)));
-		panel_4.setBackground(new Color(153, 255, 255));
+		panel_4.setBackground(new Color(176, 224, 230));
 		panel_4.setBounds(562, 132, 744, 381);
 		panel.add(panel_4);
 

@@ -44,7 +44,7 @@ public class SchoolRegistration extends JFrame {
             public void run() {
                 try {
                     SchoolRegistration frame = new SchoolRegistration();
-                    frame.getContentPane().setBackground(new Color(153, 255, 255));
+                    frame.getContentPane().setBackground(new Color(176, 224, 230));
                     frame.setVisible(true);
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -63,7 +63,7 @@ public class SchoolRegistration extends JFrame {
         setBounds(450, 190, 1014, 597);
         setResizable(false);
         contentPane = new JPanel();
-        contentPane.setBackground(new Color(153, 255, 255));
+        contentPane.setBackground(new Color(176, 224, 230));
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
         setContentPane(contentPane);
         contentPane.setLayout(null);

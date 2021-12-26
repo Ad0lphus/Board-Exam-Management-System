@@ -128,7 +128,16 @@ public class CentralHeadHomePage extends JFrame {
                 
             }
         });
-
+        
+        SHRegistration.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                StateHeadRegistrationPage StateHeadRegistrationPage = new StateHeadRegistrationPage();
+                StateHeadRegistrationPage.setVisible(true);
+                
+            }
+        });
+        
         exRegButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 dispose();

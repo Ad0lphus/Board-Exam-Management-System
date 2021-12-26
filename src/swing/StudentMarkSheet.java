@@ -83,7 +83,7 @@ public class StudentMarkSheet extends JFrame {
 		contentPane.setLayout(null);
 
 		JPanel panel = new JPanel();
-		panel.setBackground(new Color(153, 255, 255));
+		panel.setBackground(new Color(176, 224, 230));
 		panel.setBorder(new MatteBorder(14, 14, 14, 14, (Color) new Color(95, 158, 160)));
 		panel.setBounds(10, 10, 1338, 850);
 		contentPane.add(panel);
@@ -92,7 +92,7 @@ public class StudentMarkSheet extends JFrame {
 		JPanel panel_1 = new JPanel();
 		panel_1.setLayout(null);
 		panel_1.setBorder(new MatteBorder(14, 14, 14, 14, (Color) new Color(95, 158, 160)));
-		panel_1.setBackground(new Color(153, 255, 255));
+		panel_1.setBackground(new Color(176, 224, 230));
 		panel_1.setBounds(26, 26, 1280, 95);
 		panel.add(panel_1);
 
@@ -104,7 +104,7 @@ public class StudentMarkSheet extends JFrame {
 		JPanel panel_2 = new JPanel();
 		panel_2.setLayout(null);
 		panel_2.setBorder(new MatteBorder(14, 14, 14, 14, (Color) new Color(95, 158, 160)));
-		panel_2.setBackground(new Color(153, 255, 255));
+		panel_2.setBackground(new Color(176, 224, 230));
 		panel_2.setBounds(26, 152, 1280, 150);
 		panel.add(panel_2);
 
@@ -270,7 +270,7 @@ public class StudentMarkSheet extends JFrame {
 		JPanel panel_4 = new JPanel();
 		panel_4.setLayout(null);
 		panel_4.setBorder(new MatteBorder(14, 14, 14, 14, (Color) new Color(95, 158, 160)));
-		panel_4.setBackground(new Color(153, 255, 255));
+		panel_4.setBackground(new Color(176, 224, 230));
 		panel_4.setBounds(26, 332, 1280, 481);
 		panel.add(panel_4);
 
