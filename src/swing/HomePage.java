@@ -1,4 +1,4 @@
-// package swing;
+package swing;
 
 import java.awt.Color;
 import java.awt.EventQueue;
@@ -17,6 +17,11 @@ import javax.swing.border.MatteBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.*;
 
+// import StudentLoginPage.StudentLoginPage;
+// import StateHeadLoginPage.StateHeadLoginPage;
+// import CentralHeadLoginPage.CentralHeadLoginPage;
+// import ExaminerLoginPage.ExaminerLoginPage;
+
 public class HomePage extends JFrame {
      
     private JPanel contentPane;
@@ -24,12 +29,8 @@ public class HomePage extends JFrame {
     public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
-				try {
-					HomePage frame = new HomePage();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
+                HomePage frame = new HomePage();
+                frame.setVisible(true);
 			}
 		});
 	}
@@ -55,62 +56,96 @@ public class HomePage extends JFrame {
 		panel_1.setBorder(new MatteBorder(14, 14, 14, 14, (Color) new Color(95, 158, 160)));
 		panel_1.setBackground(new Color(176, 224, 230));
 		panel_1.setBounds(26, 26, 1280, 95);
-		panel.add(panel_1);
+		panel.add(panel_1);		
+
+        JLabel HeadingLabel = new JLabel("Board Exam Management System");
+        HeadingLabel.setFont(new Font("Tahoma", Font.BOLD, 40));
+        HeadingLabel.setBounds(250, 11, 847, 61);
+        panel_1.add(HeadingLabel);
 
 
-		
+        JLabel LoginLabel = new JLabel("Home Page");
+        LoginLabel.setFont(new Font("Tahoma", Font.BOLD, 50));
+        LoginLabel.setBounds(525, 150, 847, 61);
+        panel.add(LoginLabel);
 
-        JLabel lblNewLabel = new JLabel("Board Exam Management System");
-        lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 40));
-        lblNewLabel.setBounds(250, 11, 847, 61);
-        panel_1.add(lblNewLabel);
-
-
-        JLabel lblNewLabel_1 = new JLabel("Login Page");
-        lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 40));
-        lblNewLabel_1.setBounds(550, 211, 847, 61);
-        // lblNewLabel_1.setText("Welcome to the CBSE Board Exam Management System!"+ "\n" + "This system is for examiners to store and evaluate a student’s answer sheets." + "\n" + " Students can register for the exams and view their results.");
-        panel.add(lblNewLabel_1);
-
-        JLabel lblNewLabel_2 = new JLabel("Welcome to the CBSE Board Exam Management System!");
-        lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 15));
-        lblNewLabel_2.setBounds(450, 270, 1000, 100);
-        // lblNewLabel_2.setText("Welcome to the CBSE Board Exam Management System!");
-        panel.add(lblNewLabel_2);
-
-        JLabel lblNewLabel_3 = new JLabel("Click on any of the buttons below to login.");
-        lblNewLabel_3.setFont(new Font("Tahoma", Font.BOLD, 15));
-        lblNewLabel_3.setBounds(500, 300, 1000, 100);
-        // lblNewLabel_2.setText("Welcome to the CBSE Board Exam Management System!");
-        panel.add(lblNewLabel_3);
-        
+        JLabel WelcomeLabel = new JLabel("<html><center>Welcome to the CBSE <br>Board Exam Management System!</center></html>");
+        WelcomeLabel.setFont(new Font("Tahoma", Font.BOLD, 32));
+        WelcomeLabel.setBounds(400, 270, 1000, 100);
+        panel.add(WelcomeLabel);
+        //JLabel Link1 = new JLabel("<html><a href='https://ciet.nic.in/pages.php?id=booklet-on-cyber-safetysecurity&In=en&In=en'>Booklets on Cyber Safety<br> & Security Developed <br>by NCERT in Collaboration <br>with UNESCO 17/12/2021</a>");
+        //Link1.setFont(new Font("Tahoma", Font.BOLD, 18));
+        //Link1.setBounds(50, 270, 1000, 100);
+        //panel.add(Link1);
+        JLabel logo = new JLabel("<html><img src='https://i.imgur.com/tXc4oJN.png' alt='cbse_loho'></html>");
+        logo.setFont(new Font("Tahoma", Font.BOLD, 32));
+        logo.setBounds(150, 200, 1000, 500);
+        panel.add(logo);
+        // https://i.imgur.com/i7zKAdo.png
+        JLabel logo1 = new JLabel("<html><img src='https://i.imgur.com/i7zKAdo.png' alt='cbse_loho' width='300' height='350'></html>");
+        logo1.setFont(new Font("Tahoma", Font.BOLD, 32));
+        logo1.setBounds(1000, 200, 1000, 500);
+        panel.add(logo1);
+        JLabel DescriptionLabel = new JLabel("Click on any of the buttons below to login.");
+        DescriptionLabel.setFont(new Font("Tahoma", Font.BOLD, 15));
+        DescriptionLabel.setBounds(500, 400, 1000, 100);
+        panel.add(DescriptionLabel);       
        
 
-        JButton btnNewButton = new JButton("Student");
-        btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 12));
-        btnNewButton.setBounds(460, 502, 190, 50);
-        panel.add(btnNewButton);
+        JButton StudentButton = new JButton("Student");
+        StudentButton.setFont(new Font("Tahoma", Font.BOLD, 12));
+        StudentButton.setBounds(460, 502, 190, 50);
+        panel.add(StudentButton);
 
-        JButton btnNewButton_1 = new JButton("Examiner");
-        btnNewButton_1.setFont(new Font("Tahoma", Font.BOLD, 12));
-        btnNewButton_1.setBounds(680, 502, 200, 50);
-        panel.add(btnNewButton_1);
+        JButton ExaminerButton = new JButton("Examiner");
+        ExaminerButton.setFont(new Font("Tahoma", Font.BOLD, 12));
+        ExaminerButton.setBounds(680, 502, 200, 50);
+        panel.add(ExaminerButton);
 
-        JButton btnNewButton_2 = new JButton("State Head Examiner");
-        btnNewButton_2.setFont(new Font("Tahoma", Font.BOLD, 12));
-        btnNewButton_2.setBounds(460, 600, 190, 50);
-        panel.add(btnNewButton_2);
+        JButton SHeadButton = new JButton("State Head Examiner");
+        SHeadButton.setFont(new Font("Tahoma", Font.BOLD, 12));
+        SHeadButton.setBounds(460, 600, 190, 50);
+        panel.add(SHeadButton);
 
-        JButton btnNewButton_3 = new JButton("Central Head Examiner");
-        btnNewButton_3.setFont(new Font("Tahoma", Font.BOLD, 12));
-        btnNewButton_3.setBounds(680, 600, 200, 50);
-        panel.add(btnNewButton_3);
+        JButton CHeadButton = new JButton("Central Head Examiner");
+        CHeadButton.setFont(new Font("Tahoma", Font.BOLD, 12));
+        CHeadButton.setBounds(680, 600, 200, 50);
+        panel.add(CHeadButton);
 
+        // Add action listeners to Student button
+        StudentButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                StudentLoginPage studentLoginPage = new StudentLoginPage();
+                studentLoginPage.setVisible(true);
+            }
+        });
         
-        
-    }
+        // Add action listeners to Examiner button
+        ExaminerButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                ExaminerLoginPage examinerLoginPage = new ExaminerLoginPage();
+                examinerLoginPage.setVisible(true);
+            }
+        });
 
+        // Add action listeners to State Head Examiner button
+        SHeadButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                StateHeadLoginPage stateHeadLoginPage = new StateHeadLoginPage();
+                stateHeadLoginPage.setVisible(true);
+            }
+        });
 
-
-    
+        // Add action listeners to Central Head Examiner button
+        CHeadButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                CentralHeadLoginPage centralHeadLoginPage = new CentralHeadLoginPage();
+                centralHeadLoginPage.setVisible(true);
+            }
+        });
+    }   
 }
