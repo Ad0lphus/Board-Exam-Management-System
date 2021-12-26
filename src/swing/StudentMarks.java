@@ -1,3 +1,4 @@
+package swing;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
@@ -57,6 +58,7 @@ public class StudentMarks extends JFrame {
 			public void run() {
 				try {
 					StudentMarks frame = new StudentMarks();
+					// frame.setResizable(false);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -78,7 +80,7 @@ public class StudentMarks extends JFrame {
 		contentPane.setLayout(null);
 
 		JPanel panel = new JPanel();
-		panel.setBackground(new Color(176, 224, 230));
+		panel.setBackground(new Color(153, 255, 255));
 		panel.setBorder(new MatteBorder(14, 14, 14, 14, (Color) new Color(95, 158, 160)));
 		panel.setBounds(10, 10, 1338, 850);
 		contentPane.add(panel);
@@ -87,7 +89,7 @@ public class StudentMarks extends JFrame {
 		JPanel panel_1 = new JPanel();
 		panel_1.setLayout(null);
 		panel_1.setBorder(new MatteBorder(14, 14, 14, 14, (Color) new Color(95, 158, 160)));
-		panel_1.setBackground(new Color(176, 224, 230));
+		panel_1.setBackground(new Color(153, 255, 255));
 		panel_1.setBounds(26, 26, 1280, 95);
 		panel.add(panel_1);
 
@@ -99,7 +101,7 @@ public class StudentMarks extends JFrame {
 		JPanel panel_2 = new JPanel();
 		panel_2.setLayout(null);
 		panel_2.setBorder(new MatteBorder(14, 14, 14, 14, (Color) new Color(95, 158, 160)));
-		panel_2.setBackground(new Color(176, 224, 230));
+		panel_2.setBackground(new Color(153, 255, 255));
 		panel_2.setBounds(26, 132, 518, 481);
 		panel.add(panel_2);
 
@@ -232,7 +234,7 @@ public class StudentMarks extends JFrame {
 		JPanel panel_3 = new JPanel();
 		panel_3.setLayout(null);
 		panel_3.setBorder(new MatteBorder(14, 14, 14, 14, (Color) new Color(95, 158, 160)));
-		panel_3.setBackground(new Color(176, 224, 230));
+		panel_3.setBackground(new Color(153, 255, 255));
 		panel_3.setBounds(26, 624, 1280, 105);
 		panel.add(panel_3);
 
@@ -244,7 +246,9 @@ public class StudentMarks extends JFrame {
 				model.addRow(new Object[] {
 						jtxtRollNo.getText(),
 						jtxtName.getText(),
-						jtxtSurname.getText(),
+						streamList.getSelectedItem().toString(),
+						
+						//jtxtSurname.getText(),
 						jtxtPhysics.getValue(),
 						jtxtChemistry.getValue(),
 						jtxtMaths.getValue(),
@@ -253,13 +257,34 @@ public class StudentMarks extends JFrame {
 						jtxtComp.getValue(),
 						jtxtBS.getValue(),
 						jtxtGeography.getValue(),
-						streamList.getSelectedItem(),
+						jtxtHistory.getValue(),
+						//streamList.getSelectedItem(),
 				});
+				String msg = jtxtName.getText()+"\n";
+				try {
+                	Class.forName("org.postgresql.Driver");
+                    Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/Board-Exam-Management-System", "postgres", "prabithgupta");
 
+                    String query = "INSERT INTO marks values(" + jtxtRollNo.getText() + ",'" + jtxtName.getText() + "','" + streamList.getSelectedItem().toString() + "',"
+                    +jtxtPhysics.getValue()+","+jtxtChemistry.getValue()+","+jtxtMaths.getValue()+","+jtxtEnglish.getValue()+","+jtxtBiology.getValue()+","+jtxtComp.getValue()+","+
+                    jtxtBS.getValue()+","+jtxtGeography.getValue()+","+jtxtHistory.getValue()+");";
+                    System.out.print(query);
+                    Statement sta = connection.createStatement();
+                    int x = sta.executeUpdate(query);
+                    if (x == 0) {
+                        JOptionPane.showMessageDialog(btnNewButton, "Marks already exists");
+                    } else {
+                        JOptionPane.showMessageDialog(btnNewButton,
+                            "Welcome,\nMarks has been registered sucessfully for"+msg+"!");
+                    }
+                    connection.close();
+                } catch (Exception exception) {
+                    exception.printStackTrace();
+                }
 				if (table.getSelectedRow() == -1) {
 					if (table.getRowCount() == 0) {
-						JOptionPane.showMessageDialog(null, "Membership Update confirmed",
-								"Membership  Management System",
+						JOptionPane.showMessageDialog(null, "Marks Update confirmed",
+								"Marks  Management System",
 								JOptionPane.OK_OPTION);
 					}
 				}
@@ -277,7 +302,7 @@ public class StudentMarks extends JFrame {
 
 				jtxtRollNo.setText("");
 				jtxtName.setText("");
-				jtxtSurname.setText("");
+				//jtxtSurname.setText("");
 				jtxtPhysics.setValue(0);
 				jtxtChemistry.setValue(0);
 				jtxtMaths.setValue(0);
@@ -286,8 +311,10 @@ public class StudentMarks extends JFrame {
 				jtxtComp.setValue(0);
 				jtxtBS.setValue(0);
 				jtxtGeography.setValue(0);
+				jtxtHistory.setValue(0);
 				streamList.setSelectedItem("");
 			}
+			
 		});
 		button_1.setFont(new Font("Tahoma", Font.BOLD, 20));
 		button_1.setBounds(260, 23, 179, 33);
@@ -309,6 +336,32 @@ public class StudentMarks extends JFrame {
 								"Membership Management System", JOptionPane.OK_OPTION);
 					}
 				} else {
+					try {
+	                	Class.forName("org.postgresql.Driver");
+	                    Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/Board-Exam-Management-System", "postgres", "prabithgupta");
+
+	                    String query = "DELETE FROM marks WHERE (enrollno = "+table.getModel().getValueAt(table.getSelectedRow(), 0) + ");";
+	                    System.out.print(query);
+	                    Statement sta = connection.createStatement();
+	                    int x = sta.executeUpdate(query);
+	                    if (x == 0) {
+	                        JOptionPane.showMessageDialog(btnNewButton, "Marks already deleted");
+	                    } else {
+	                        JOptionPane.showMessageDialog(btnNewButton,
+	                            "Welcome,\nMarks has been deleted sucessfully for "+table.getModel().getValueAt(table.getSelectedRow(), 1)+"!");
+	                    }
+	                    connection.close();
+	                } catch (Exception exception) {
+	                    exception.printStackTrace();
+	                }
+					if (table.getSelectedRow() == -1) {
+						if (table.getRowCount() == 0) {
+							JOptionPane.showMessageDialog(null, "Marks Update confirmed",
+									"Marks  Management System",
+									JOptionPane.OK_OPTION);
+						}
+					}
+					System.out.println(table.getModel().getValueAt(0, 0));
 					model.removeRow(table.getSelectedRow());
 				}
 
@@ -318,15 +371,17 @@ public class StudentMarks extends JFrame {
 		button_2.setBounds(740, 23, 179, 33);
 		panel_3.add(button_2);
 
-		JButton exitButton = new JButton("Exit");
+		JButton exitButton = new JButton("Back");
 		exitButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
 				frame = new JFrame();
-				if (JOptionPane.showConfirmDialog(frame, "Confirm if you want to exit",
-						"Membership Registration Systems",
+				if (JOptionPane.showConfirmDialog(frame, "Confirm if you want to logout",
+						"Marks Registration Systems",
 						JOptionPane.YES_NO_OPTION) == JOptionPane.YES_NO_OPTION) {
-					System.exit(0);
+					 dispose();
+					 HomePage HomePage = new HomePage();
+					 HomePage.setVisible(true);
 				}
 
 			}
@@ -359,7 +414,7 @@ public class StudentMarks extends JFrame {
 		JPanel panel_4 = new JPanel();
 		panel_4.setLayout(null);
 		panel_4.setBorder(new MatteBorder(14, 14, 14, 14, (Color) new Color(95, 158, 160)));
-		panel_4.setBackground(new Color(176, 224, 230));
+		panel_4.setBackground(new Color(153, 255, 255));
 		panel_4.setBounds(562, 132, 744, 381);
 		panel.add(panel_4);
 
