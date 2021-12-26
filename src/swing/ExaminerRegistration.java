@@ -1,3 +1,23 @@
+package swing;
+import java.awt.Color;
+import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.List;
+import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.Statement;
+import java.util.ArrayList;
+
+import javax.swing.border.EmptyBorder;
+import javax.swing.*;
+/**
+ * Student Registration using Swing
+ * @author Project_go_brr_team
+ *
+ */
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
@@ -33,6 +53,7 @@ public class ExaminerRegistration extends JFrame {
     private JTextField username;
     private JTextField lblStream;
     private JTextField mob;
+    private JTextField examID;
     private JPasswordField passwordField;
     private JButton btnNewButton;
     
@@ -154,25 +175,25 @@ public class ExaminerRegistration extends JFrame {
         contentPane.add(lblStream);
         
         enrollNum = new JTextField();
-        enrollNum.setFont(new Font("Tahoma", Font.PLAIN, 32));
+        enrollNum.setFont(new Font("Tahoma", Font.PLAIN, 22));
         enrollNum.setBounds(214, 111, 228, 25);
         contentPane.add(enrollNum);
         enrollNum.setColumns(10);
         
         firstname = new JTextField();
-        firstname.setFont(new Font("Tahoma", Font.PLAIN, 32));
+        firstname.setFont(new Font("Tahoma", Font.PLAIN, 22));
         firstname.setBounds(214, 161, 228, 25);
         contentPane.add(firstname);
         firstname.setColumns(10);
 
         lastname = new JTextField();
-        lastname.setFont(new Font("Tahoma", Font.PLAIN, 32));
+        lastname.setFont(new Font("Tahoma", Font.PLAIN, 22));
         lastname.setBounds(214, 200, 228, 25);
         contentPane.add(lastname);
         lastname.setColumns(10);
 
         email = new JTextField();
-        email.setFont(new Font("Tahoma", Font.PLAIN, 32));
+        email.setFont(new Font("Tahoma", Font.PLAIN, 22));
         email.setBounds(214, 240, 228, 25);
         contentPane.add(email);
         email.setColumns(10);
@@ -215,30 +236,30 @@ public class ExaminerRegistration extends JFrame {
         qualificationComboBox.setBounds(214, 390, 230, 25);
         contentPane.add(qualificationComboBox);
 
-        lastname = new JTextField();
-        lastname.setFont(new Font("Tahoma", Font.PLAIN, 32));
-        lastname.setBounds(214, 425, 228, 25);
-        contentPane.add(lastname);
-        lastname.setColumns(10);
+        examID = new JTextField();
+        examID.setFont(new Font("Tahoma", Font.PLAIN, 22));
+        examID.setBounds(214, 425, 228, 25);
+        contentPane.add(examID);
+        examID.setColumns(10);
         
-        String[] schoolOptionsToChoose = {"school1","school2"}; 
+        String[] schoolOptionsToChoose = {"1","2","3","4","5","6","7","8","9","10","11","12"};
         JComboBox <String> schoolComboBox = new JComboBox<>(schoolOptionsToChoose);
         schoolComboBox.setBounds(700, 120, 230, 25);
         contentPane.add(schoolComboBox);
         
         username = new JTextField();
-        username.setFont(new Font("Tahoma", Font.PLAIN, 32));
+        username.setFont(new Font("Tahoma", Font.PLAIN, 22));
         username.setBounds(707, 160, 228, 25);
         contentPane.add(username);
         username.setColumns(10);
         
         passwordField = new JPasswordField();
-        passwordField.setFont(new Font("Tahoma", Font.PLAIN, 32));
+        passwordField.setFont(new Font("Tahoma", Font.PLAIN, 22));
         passwordField.setBounds(707, 200, 228, 25);
         contentPane.add(passwordField);
         
         mob = new JTextField();
-        mob.setFont(new Font("Tahoma", Font.PLAIN, 32));
+        mob.setFont(new Font("Tahoma", Font.PLAIN, 22));
         mob.setBounds(707, 240, 228, 25);
         contentPane.add(mob);
         mob.setColumns(10);
@@ -269,7 +290,7 @@ public class ExaminerRegistration extends JFrame {
         genderRadioO.setBackground(new Color(153, 255, 255));
         contentPane.add(genderRadioO);
 
-        String[] streamOptionsToChoose = {"PCMB-Hindi","PCMB-Sanskrit"}; 
+        String[] streamOptionsToChoose = {"1","2","3","4"};
         JComboBox <String> streamComboBox = new JComboBox<>(streamOptionsToChoose);
         streamComboBox.setBounds(707, 360, 228, 25);
         contentPane.add(streamComboBox);
@@ -277,30 +298,50 @@ public class ExaminerRegistration extends JFrame {
         btnNewButton = new JButton("Register");
         btnNewButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+            	String EID = enrollNum.getText();
                 String firstName = firstname.getText();
                 String lastName = lastname.getText();
-                String emailId = email.getText();
+                String FullName = firstName+" "+lastName;
+                String isSettr = "null";
+                if(yesSetterRadio.isSelected()) { isSettr = "true";}
+                if(noSetterRadio.isSelected()) { isSettr = "false";}
+                String isCheckr = "null";
+                if(yesCheckRadio.isSelected()) { isCheckr = "true";}
+                if(yesCheckRadio.isSelected()) { isCheckr = "false";}
+                String isSuper = "null";
+                if(yesSuperRadio.isSelected()) { isSuper = "true";}
+                if(noSuperRadio.isSelected()) { isSuper = "false";}
+                String emailID = email.getText();
                 String userName = username.getText();
-                String mobileNumber = mob.getText();
-                int mobLen = mobileNumber.length();
-                int aadharLen = aadhar.getText().length();
-                String password = passwordField.getText();
-
-                String msg = "" + firstName;
+                String PassWord = String.valueOf(passwordField.getPassword());
+                String Qualification = qualificationComboBox.getSelectedItem().toString();
+                String ExamID = examID.getText();
+                String centerID = schoolComboBox.getSelectedItem().toString();
+                String state = jComboBox.getSelectedItem().toString();
+                String city = jiComboBox.getSelectedItem().toString();
+                String stream = streamComboBox.getSelectedItem().toString();
+                String mobile = mob.getText();
+                int mobLen = mobile.length();
+                String gender_ = "null";
+                if(genderRadioM.isSelected()) { gender_ = "male";}
+                if(genderRadioF.isSelected()) { gender_ = "female";}
+                if(genderRadioO.isSelected()) { gender_ = "others";}
+                //int aadharLen = aadhar.getText().length();
+                //String password =String.valueOf( passwordField.getPassword());
+                
+                String msg = "" + FullName;
                 msg += " \n";
                 if (mobLen != 10) {
                     JOptionPane.showMessageDialog(btnNewButton, "Enter a valid mobile number");
                 }
-                if (aadharLen != 12) {
-                    JOptionPane.showMessageDialog(btnNewButton, "Enter a valid Aadhar number");
-                }
+                
                 try {
                 	Class.forName("org.postgresql.Driver");
-                    Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/invention_management_system\", \"postgres\", \"prabithgupta");
+                    Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/Board-Exam-Management-System", "postgres", "prabithgupta");
 
-                    String query = "INSERT INTO student values('" + firstName + "','" + lastName + "','" + userName + "','" +
-                        password + "','" + emailId + "','" + mobileNumber + "')";
-
+                    String query = "INSERT INTO examinar values(" + EID + ",'" + firstName + "','" + lastName + "'," +mobile+",'"+emailID+"','"+Qualification+"','"+gender_+"',"+stream+","+isCheckr+","+
+                    	isSuper+","+isSettr+","+centerID+","+ExamID+",'"+state+"','"+city+"','"+userName+"','"+PassWord+"');";
+                    System.out.print(query);
                     Statement sta = connection.createStatement();
                     int x = sta.executeUpdate(query);
                     if (x == 0) {
@@ -315,8 +356,24 @@ public class ExaminerRegistration extends JFrame {
                 }
             }
         });
+        JButton backButton = new JButton("Back");
+        backButton.setFont(new Font("Tahoma", Font.PLAIN, 22));
+        backButton.setBounds(199, 480, 259, 50);
+        contentPane.add(backButton);
+        backButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+            	if (JOptionPane.showConfirmDialog(contentPane, "Confirm if you want to logout",
+						"Examinar Registration Systems",
+						JOptionPane.YES_NO_OPTION) == JOptionPane.YES_NO_OPTION) {
+            				dispose();
+            				HomePage HomePage = new HomePage();
+            				HomePage.setVisible(true);
+            	}
+            }
+        });
         btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 22));
-        btnNewButton.setBounds(399, 480, 259, 50);
+        btnNewButton.setBounds(699, 480, 259, 50);
         contentPane.add(btnNewButton);
+        getContentPane().setBackground(new Color(153, 255, 255));
     }
 }
