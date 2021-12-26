@@ -1,3 +1,5 @@
+package swing;
+
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
@@ -32,6 +34,7 @@ public class SchoolRegistration extends JFrame {
     private JTextField email;
     private JTextField pinCode;
     private JButton btnNewButton;
+    private JFrame frame;
 
     /**
      * Launch the application.
@@ -60,6 +63,7 @@ public class SchoolRegistration extends JFrame {
         setBounds(450, 190, 1014, 597);
         setResizable(false);
         contentPane = new JPanel();
+        contentPane.setBackground(new Color(153, 255, 255));
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
         setContentPane(contentPane);
         contentPane.setLayout(null);
@@ -101,7 +105,7 @@ public class SchoolRegistration extends JFrame {
         contentPane.add(lblMobileNumber);
         
         ArrayList<Integer> schoolID = new ArrayList<Integer>();
-        for (int i = 10000; i <= 99999; ++i) {
+        for (int i = 0; i <= 100; ++i) {
         	schoolID.add(i);
         }
         JComboBox schoolIDComboBox = new JComboBox(schoolID.toArray());
@@ -141,6 +145,25 @@ public class SchoolRegistration extends JFrame {
         contentPane.add(pinCode);
         pinCode.setColumns(10);
         
+        JButton backButton = new JButton("Back");
+        backButton.setFont(new Font("Tahoma", Font.BOLD, 20));
+        backButton.setBounds(200, 447, 259, 74);
+        contentPane.add(backButton);
+        
+        backButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+
+				frame = new JFrame();
+				if (JOptionPane.showConfirmDialog(frame, "Confirm if you want to logout",
+						"School Registration Systems",
+						JOptionPane.YES_NO_OPTION) == JOptionPane.YES_NO_OPTION) {
+					 dispose();
+					 HomePage HomePage = new HomePage();
+					 HomePage.setVisible(true);
+				}
+
+			}
+		});
         btnNewButton = new JButton("Register");
         btnNewButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -149,17 +172,17 @@ public class SchoolRegistration extends JFrame {
                 String emailId = email.getText();
                 String stateOfSchool = stateSchoolChoose.getSelectedItem().toString();
                 String cityOfSchool = citySchoolChoose.getSelectedItem().toString();
-
+                String pin_code = pinCode.getText();
                 String msg = "" + schoolN;
                 msg += " \n";
 
 
                 try {
                 	Class.forName("org.postgresql.Driver");
-                    Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/invention_management_system\", \"postgres\", \"prabithgupta");
+                    Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/Board-Exam-Management-System", "postgres", "prabithgupta");
 
-                    String query = "INSERT INTO account values('" + schoolN + "','" + schoolid + "','" + stateOfSchool + "','" + "','" + emailId + "','" + cityOfSchool + "')";
-
+                    String query = "INSERT INTO school values(" + schoolid + ",'" + schoolN + "','" + cityOfSchool + "','" +stateOfSchool+ "'," + pin_code + ")";
+                    System.out.print(query);
                     Statement sta = connection.createStatement();
                     int x = sta.executeUpdate(query);
                     if (x == 0) {
@@ -175,7 +198,8 @@ public class SchoolRegistration extends JFrame {
             }
         });
         btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 22));
-        btnNewButton.setBounds(399, 447, 259, 74);
+        btnNewButton.setBounds(490, 447, 259, 74);
+        btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 20));
         contentPane.add(btnNewButton);
     }
 }
